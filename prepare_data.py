@@ -78,20 +78,3 @@ def piped_standardize(train_x, test_x):
     return ( pd.DataFrame(scaler.transform(train_x), columns = header), pd.DataFrame(scaler.transform(test_x), columns = header));
     
     
-def findFirstPeak(report):
-    """Given the report dictionary whose key is number of batch training vs %accuracy,
-    return the first peak: (firstPeak_x, %accuracy)
-    report starts at key = 1 (i.e. training session index is based on 1)
-    """
-    #Add boundaries to the report
-    report[0] = -float('inf') #Any value <0 will do
-    report[len(report)+1] = -float('inf')
-    
-    #Do search starting at the smaller index
-    for i in range(1, len(report) +1):
-        if (report[i-1] <=report[i]) and (report[i] >= report[i+1]):
-            return (i, float("{0:.2f}".format(report[i])) )
-    return None #No peak found. This should never happen. 
-           
-
-    

@@ -22,6 +22,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import LinearSVC
 
+from report_tools import *
 
 from itertools import chain, combinations
 
@@ -163,8 +164,8 @@ def get_FS_report(filepath, classifier, nTr = 3, nTest = 10):
 
 def plot_FS_report(FS_report, clfName, fname):
     plt.figure();
-    plt.xlim([0,24]);plt.xticks(np.arange(0, 24, 1.0));
-    plt.ylim([0,1.0]);plt.yticks(np.arange(0, 1.0, 0.1));
+#    plt.xlim([0,24]);#plt.xticks(np.arange(0, 24, 1.0));
+#    plt.ylim([0,1.0]);#plt.yticks(np.arange(0, 1.0, 0.1));
     plt.xlabel("number of best features selected")
     plt.ylabel("% accuracy")
     plt.title("Report on: "+ fname+ \
@@ -391,21 +392,23 @@ def plotThreeReports(title, report1, report2, report3, toSave = True):
 
  
  
-#######TEST##########################################################################################
-#dirPath = 'C:\\Users\\LLP-admin\\workspace\\weka\\token-experiment-dataset\\';
-#for i in range(0,6):
-#    fname = 'features_' +str(i)
-#    fmt = '.csv'
-#    filepath = dirPath + fname + fmt
-#    #classifier = LinearSVC()
-#    #clfName = 'linearSVC';
-#    classifier = KNeighborsClassifier(1)
-#    clfName = 'knn_1'
-#    FS_report = get_FS_report(filepath, classifier);
-#    e = time.time()
-#    print 'runtime: ', e - s
-#    plot_FS_report(FS_report,clfName, fname)
-
+########TEST##########################################################################################
+dirPath = 'C:\\Users\\LLP-admin\\workspace\\weka\\token-experiment-dataset\\';
+for i in range(0,6):
+   
+    fname = 'features_' +str(i)
+    fmt = '.csv'
+    filepath = dirPath + fname + fmt
+    #classifier = LinearSVC()
+    #clfName = 'linearSVC';
+    classifier = KNeighborsClassifier(1)
+    clfName = 'knn_1'
+    FS_report = get_FS_report(filepath, classifier);
+    e = time.time()
+    num2features = build_num2features(FS_report);
+    sorted_report = build_sortedReportList(FS_report);
+    threePeaks = findFirstNPeaks(FS_report, N=3)
+    suggestFeatures(FS_report, fname, clfName, toWrite = True)
 
 
 ############To test pca effects######################################################################
