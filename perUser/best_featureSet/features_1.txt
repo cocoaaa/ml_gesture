@@ -1,0 +1,8 @@
+filename: features_1
+runtime: 1.72699999809
+
+<Feature Selection>
+After looking at the first two instances of the peaks (in the "nFeatures vs. %accuracy" graph), we suggest the following: 
+	Number of features: 9
+	Selected features:['MaxCircleCenterVertexDistance', 'MinCentroidVertexDistance', 'MaxCentroidVertexDistance', 'MeanPairedDistance', 'MedianCentroidVertexDistance', 'MeanCircleCenterVertexDistance', 'MeanCentroidVertexDistance', 'TouchArea', 'MedianPairedDistance']
+------End of feature selection report ------

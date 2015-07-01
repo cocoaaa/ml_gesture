@@ -1,0 +1,7 @@
+
+---------------Feature Suggestion---------------
+	Based on the ranking by Random Forest, we suggest the following:
+1. Number of features: 8
+2. Features: ['MinCircleCenterVertexDistance', 'MinCentroidVertexDistance', 'SmallestInscribedCircleRadius', 'MedianCentroidVertexDistance', 'MeanCircleCenterVertexDistance', 'MeanCentroidVertexDistance', 'MeanPairedDistance', 'MedianPairedDistance']
+
+----------End of feature recommendation----------
